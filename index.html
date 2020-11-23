@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="index.css">
+    <title>team_target</title>
+    <style>
+        #output li {
+            height: 5vmin;
+            background: #ccc;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="team_target">
+        TEAM-TARGET
+    </header>
+    <header>
+        <div class="header_target">
+            <textarea class="main_target" id="main-target" style="background-color:#f5f5f5;" placeholder="目的"
+                value=""></textarea>
+        </div>
+        <div class="header_input">
+            <textarea style="display: none;" class="target" dropzone="copy" draggable="true" id="sub-target"
+                placeholder="  目標1" value="" display></textarea>
+            <textarea class="target" dropzone="copy" draggable="true" id="sub-target-1" placeholder="目標1"
+                style="background-color:#cd853f;" value=""></textarea>
+            <textarea class="target" dropzone="copy" draggable="true" id="sub-target-2" placeholder="目標2"
+                style="background-color:#00ced1;" value=""></textarea>
+            <textarea class="target" dropzone="copy" draggable="true" id="sub-target-3" placeholder="目標3"
+                style="background-color:#ba55e3;" value=""></textarea>
+            <textarea class="target" dropzone="copy" draggable="true" id="sub-target-4" placeholder="目標4"
+                style="background-color:#ffd700;" value=""></textarea>
+            <textarea class="target" dropzone="copy" draggable="true" id="sub-target-5" placeholder="目標5"
+                style="background-color:#ffa500;" value=""></textarea>
+            <textarea class="target" dropzone="copy" draggable="true" id="sub-target-6" placeholder="目標6"
+                style="background-color:#ee82ee;" value=""></textarea>
+            <textarea class="target" dropzone="copy" draggable="true" id="sub-target-7" placeholder="目標7"
+                style="background-color:#7fff00;" value=""></textarea>
+            <textarea class="target" dropzone="copy" draggable="true" id="sub-target-8" placeholder="目標8"
+                style="background-color:#f5deb3;" value=""></textarea>
+        </div>
+    </header>
+
+
+    <main>
+        <div class="middle">
+            <h1 class="middle_target">目標設定</h1>
+            <p class="explain">目的を達成するために必要な目標を８つあげましょう。そのために何が必要なのか個々の考えをドンドンあげていきましょう。匿名での投稿なので、気にせず、あげまくってください。</p>
+            <!-- 入力場所の作成 -->
+            <ul class="input">
+                <!--name-->
+                <li class="name_box">
+                    <label for="name">name</label>
+                    <input type="text" id="name" placeholder="name">
+                </li>
+                <!--textarea-->
+                <li class="textarea_box">
+                    <textarea class="input_textarea" name="" id="text" placeholder="ガンガンアイデアを書き込んでください！！！！！"></textarea>
+                </li>
+                <!--send-->
+                <li class="send_box">
+                    <button class="check_button" id="send">追加</button>
+                </li>
+            </ul>
+        </div>
+        <!-- データ出力場所 -->
+        <div class="over">
+            <div class="output-box">
+                <ul class="output" id="output"></ul>
+            </div>
+            <div class="next">
+                =>
+            </div>
+            <div class="select_output">
+                <textarea class="select_target"></textarea>
+                <textarea class="select_target"></textarea>
+                <textarea class="select_target"></textarea>
+                <textarea class="select_target"></textarea>
+                <textarea class="select_target"></textarea>
+                <textarea class="select_target"></textarea>
+                <textarea class="select_target"></textarea>
+                <textarea class="select_target"></textarea>
+            </div>
+        </div>
+    </main>
+
+    <footer>Team-building</footer>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- 以下にfirebaseのコードを貼り付けよう -->
+
+
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "",
+            authDomain: "team-target-28.firebaseapp.com",
+            databaseURL: "https://team-target-28.firebaseio.com",
+            projectId: "team-target-28",
+            storageBucket: "team-target-28.appspot.com",
+            messagingSenderId: "700589648527",
+            appId: "1:700589648527:web:47426b0892450943039efa"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore().collection('mind-com');
+    </script>
+    <script>
+        // 日時をいい感じの形式にする関数
+        function convertFromFirestoreTimestampToDatetime(timestamp) {
+            const _d = timestamp ? new Date(timestamp * 1000) : new Date();
+            const Y = _d.getFullYear();
+            const m = (_d.getMonth() + 1).toString().padStart(2, '0');
+            const d = _d.getDate().toString().padStart(2, '0');
+            const H = _d.getHours().toString().padStart(2, '0');
+            const i = _d.getMinutes().toString().padStart(2, '0');
+            const s = _d.getSeconds().toString().padStart(2, '0');
+            return `${Y}/${m}/${d} ${H}:${i}:${s}`;
+        }
+
+
+        /***** ドラッグ開始時の処理 *****/
+        function f_dragstart(event) {
+            //ドラッグするデータのid名をDataTransferオブジェクトにセット
+            event.dataTransfer.setData("text", event.target.id);
+        }
+
+        /***** ドラッグ要素がドロップ要素に重なっている間の処理 *****/
+        function f_dragover(event) {
+            //dragoverイベントをキャンセルして、ドロップ先の要素がドロップを受け付けるようにする
+            event.preventDefault();
+        }
+
+        function f_drop(event) {
+            //ドラッグされたデータのid名をDataTransferオブジェクトから取得
+            var id_name = event.dataTransfer.getData("text", event.target.id);
+            //id名からドラッグされた要素を取得
+            var drag_elm = document.getElementById(id_name);
+            //ドロップ先にドラッグされた要素を追加
+            event.currentTarget.appendChild(drag_elm);
+            //エラー回避のため、ドロップ処理の最後にdropイベントをキャンセルしておく
+            event.preventDefault();
+
+
+            //////////////////////////////////////
+            const data = {
+                name: $('#name').val(),
+                text: $('#text').val(),
+                time: firebase.firestore.FieldValue.serverTimestamp(),
+            };
+            db.add(data);
+            $('#text').val('');
+
+            db.orderBy('time', 'desc').onSnapshot(function (querySnapshot) {
+                // まずはconsole.log()で出力してデータの形を確認！
+                const dataArray = [];
+                querySnapshot.docs.forEach(function (doc) {
+                    const data = {
+                        id: doc.id,
+                        data: doc.data(),
+                    };
+                    dataArray.push(data);
+                });
+                console.log(dataArray);
+
+                const tagArray = [];
+                dataArray.forEach(function (data) {
+                    const tag = `
+                            <li id="${data.id}" draggable="true" ondragstart="f_dragstart(event)"  "style="border-bottom: doble 1px #fff;">
+                              <p>${data.data.text}</p>
+                            </li>
+                            `;
+                    tagArray.push(tag);
+                });
+                $('#output').html(tagArray);
+            });
+            //////////////////////////////////////
+        }
+
+        // 送信ボタンクリック時にデータを送信する処理
+        $('#send').on('click', function () {
+            const data = {
+                name: $('#name').val(),
+                text: $('#text').val(),
+                time: firebase.firestore.FieldValue.serverTimestamp(),
+            };
+            db.add(data);
+            $('#text').val('');
+        });
+        $(window).keydown(function (e) {
+            if (e.keyCode == 13) {
+                const data = {
+                    name: $('#name').val(),
+                    text: $('#text').val(),
+                    time: firebase.firestore.FieldValue.serverTimestamp(),
+                };
+                db.add(data);
+                $('#text').val('');
+            }
+        });
+
+        // データをリアルタイムに取得する処理
+        db.orderBy('time', 'desc').onSnapshot(function (querySnapshot) {
+            // まずはconsole.log()で出力してデータの形を確認！
+            const dataArray = [];
+            querySnapshot.docs.forEach(function (doc) {
+                const data = {
+                    id: doc.id,
+                    data: doc.data(),
+                };
+                dataArray.push(data);
+            });
+            // console.log(dataArray);
+
+            const tagArray = [];
+            dataArray.forEach(function (data) {
+                const tag = `
+                            <li id="${data.id}" draggable="true" ondragstart="f_dragstart(event)" style="border-bottom: solid 0.2px #fff;">
+                              <p>${data.data.text}</p>
+                            </li>
+                            `;
+                tagArray.push(tag);
+            });
+            $('#output').html(tagArray);
+        });
+
+        //動的
+        // $("#output").click(function () {
+        //     $("#output").after("<div id=\"2\">２つ目の要素追加</div>");
+        // });
+
+        // $("#output").click(function () {
+        //     alert("1つ目の要素クリック");
+        // });
+
+        // $(document).on("click", "#2", function () {
+        //     alert("2つ目の要素クリック");
+        // });
+
+        // $("#2").click(function () {
+        //     $("#2").after("<div id=\"3\">3つ目の要素追加</div>");
+        // });
+
+        // $("#2").click(function () {
+        //     alert("2つ目の要素クリック");
+        // });
+
+        // $(document).on("click", "#3", function () {
+        //     alert("3つ目の要素クリック");
+        // });
+
+
+        // ドラッグアンドドロップ
+        const output = document.querySelector('.output');
+
+        output.addEventListener('dragstart', () => {
+            // console.log('dragstartイベント');
+        });
+        output.addEventListener('drag', () => {
+            // console.log('dragイベント');
+        });
+        output.addEventListener('dragend', () => {
+            // console.log('dragendイベント');
+        });
+
+        // 受け手
+        const target = document.querySelector('.target');
+
+        target.addEventListener('dragenter', () => {
+            // console.log('dragenterイベント');
+        });
+        target.addEventListener('dragover', () => {
+            // console.log('dragoverイベント');
+        });
+        target.addEventListener('dragleave', () => {
+            // console.log('drageleaveイベント');
+        });
+        target.addEventListener('dragover', (event) => {
+            event.preventDefault();
+        });
+        target.addEventListener('drop', () => {
+            // console.log('dropイベント');
+        });
+
+        function setOverflow($overflow) {
+            var $element = document.getElementById("over");
+            $element.style.overflow = $overflow;
+        };
+    </script>
+</body>
+
+</html>

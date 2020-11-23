@@ -1,0 +1,170 @@
+body{
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: rgb(131, 199, 245);
+}
+header{
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 0%;
+    width: 90vw;
+    height: 50%;
+    background-color: white;
+}
+.team_target{
+    font-size: 6vmin;
+}
+.header_target{
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+.main_target{
+    width: 20vmin;
+}
+.header_input{
+    display: flex; 
+    justify-content:space-around;
+    align-items: center;
+    margin: 0%;
+    width: 98%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    height: 100%;
+}
+.target{
+    margin: 0%;
+    padding: 0%;
+    width: calc(100%/8);
+    display: flex; 
+    justify-content: flex-start;
+    align-items: center;
+}
+main{
+    width: 90vw;
+    height: 73vh;
+    background-color: #ccc;
+}
+.middle{
+    height: 26vh;
+    background-color: white;
+    margin: 0%;
+    padding: 0%;
+}
+.middle_target{
+    width: 100%;
+}
+h1{
+    font-size: 4vmin;
+    margin:0px;
+    height: 6vmin;
+}
+.explain{
+    padding: 0%;
+    margin: 0%;
+    font-size: 2vmin;
+    height: 10vmin;
+}
+
+
+.input{
+    padding: 0%;
+    margin: 0%;
+    display: flex; 
+    justify-content: flex-start;
+    align-items: center;
+    width: calc(100%/2);
+    height: 10vmin;
+}
+li{
+    list-style: none;
+    display: flex; 
+    justify-content: center;
+}
+.name_box{
+    display: none;
+}
+.textarea_box{
+    width: 80%;
+    height: 6vh;
+}
+.input_textarea{
+    width: 100%;
+}
+textarea{
+    border-radius: 20px;
+    height: 100%;
+    resize: none;
+    text-align: center;
+}
+.send_box{
+    width: 20%;
+    height: 6vh;
+    display: flex; 
+    justify-content: flex-start;
+}
+.check_button{
+    width: 100%;
+    height: 100%;
+}
+button{
+    border-radius: 20px;
+}
+
+.over{
+    height: 47vh;
+    width: 100%;
+    display: flex; 
+    justify-content: center;
+    margin: 0%;
+}
+.output_box{
+    height: 100%;
+    width:40%;
+    overflow-y: scroll;
+    margin: 0%;
+    padding: 0%;
+}
+.output{
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+    padding: 0%;
+    margin: 0%;
+}
+.next{
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 10%;
+    height: 100%;
+    margin: 0%;
+    background-color: white;
+}
+.select_output{
+    height: 75%;
+    width: 40%;
+    /* overflow-y: scroll; */
+    margin: 0%;
+}
+.select_target{
+    width: 100%;
+    height: calc(100%/8);
+}
+footer{
+    background-color: white;
+    width: 90vw;
+    height: 3vh;
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
