@@ -11,7 +11,6 @@
     <style>
         #output li {
             height: 5vmin;
-            background: #ccc;
         }
     </style>
 </head>
@@ -23,27 +22,25 @@
     </header>
     <header>
         <div class="header_target">
-            <textarea class="main_target" id="main-target" style="background-color:#f5f5f5;" placeholder="目的"
+            <textarea class="main_target" id="main-target" style="background-color: #ff6347;" placeholder="目的"
                 value=""></textarea>
         </div>
         <div class="header_input">
-            <textarea style="display: none;" class="target" dropzone="copy" draggable="true" id="sub-target"
-                placeholder="  目標1" value="" display></textarea>
-            <textarea class="target" dropzone="copy" draggable="true" id="sub-target-1" placeholder="目標1"
+            <textarea readonly class="target" dropzone="copy" draggable="true" id="sub-target-1" placeholder="目標1"
                 style="background-color:#cd853f;" value=""></textarea>
-            <textarea class="target" dropzone="copy" draggable="true" id="sub-target-2" placeholder="目標2"
+            <textarea readonly class="target" dropzone="copy" draggable="true" id="sub-target-2" placeholder="目標2"
                 style="background-color:#00ced1;" value=""></textarea>
-            <textarea class="target" dropzone="copy" draggable="true" id="sub-target-3" placeholder="目標3"
+            <textarea readonly class="target" dropzone="copy" draggable="true" id="sub-target-3" placeholder="目標3"
                 style="background-color:#ba55e3;" value=""></textarea>
-            <textarea class="target" dropzone="copy" draggable="true" id="sub-target-4" placeholder="目標4"
+            <textarea readonly class="target" dropzone="copy" draggable="true" id="sub-target-4" placeholder="目標4"
                 style="background-color:#ffd700;" value=""></textarea>
-            <textarea class="target" dropzone="copy" draggable="true" id="sub-target-5" placeholder="目標5"
+            <textarea readonly class="target" dropzone="copy" draggable="true" id="sub-target-5" placeholder="目標5"
                 style="background-color:#ffa500;" value=""></textarea>
-            <textarea class="target" dropzone="copy" draggable="true" id="sub-target-6" placeholder="目標6"
+            <textarea readonly class="target" dropzone="copy" draggable="true" id="sub-target-6" placeholder="目標6"
                 style="background-color:#ee82ee;" value=""></textarea>
-            <textarea class="target" dropzone="copy" draggable="true" id="sub-target-7" placeholder="目標7"
+            <textarea readonly class="target" dropzone="copy" draggable="true" id="sub-target-7" placeholder="目標7"
                 style="background-color:#7fff00;" value=""></textarea>
-            <textarea class="target" dropzone="copy" draggable="true" id="sub-target-8" placeholder="目標8"
+            <textarea readonly class="target" dropzone="copy" draggable="true" id="sub-target-8" placeholder="目標8"
                 style="background-color:#f5deb3;" value=""></textarea>
         </div>
     </header>
@@ -79,47 +76,47 @@
                 </div>
             </div>
             <div class="next">
-                =>
+                <p class="write" style="font-size: 20%;">write or drag&drop</p>
             </div>
             <table class="select_output">
                 <tr>
-                    <td><textarea id="target-1" dropzone="copy" draggable="true" placeholder="目標１"
-                            class="select_target"></textarea>
+                    <td><textarea style="background-color: #cd853f;" id="target-1" dropzone="copy" draggable="true"
+                            placeholder="目標１" class="select_target"></textarea>
                     </td>
-                    <td><textarea id="target-2" dropzone="copy" draggable="true" placeholder="目標２"
-                            class="select_target"></textarea>
+                    <td><textarea style="background-color:#00ced1;" id="target-2" dropzone="copy" draggable="true"
+                            placeholder="目標２" class="select_target"></textarea>
                     </td>
-                    <td><textarea id="target-3" dropzone="copy" draggable="true" placeholder="目標３"
-                            class="select_target"></textarea>
-                    </td>
-                </tr>
-                <tr>
-                    <td><textarea id="target-4" dropzone="copy" draggable="true" placeholder="目標4"
-                            class="select_target"></textarea>
-                    </td>
-                    <td><textarea id="target-0" dropzone="copy" draggable="true" placeholder="目的"
-                            class="select_target"></textarea>
-                    </td>
-                    <td><textarea id="target-5" dropzone="copy" draggable="true" placeholder="目標5"
-                            class="select_target"></textarea>
+                    <td><textarea style="background-color: #ba55d3;" id="target-3" dropzone="copy" draggable="true"
+                            placeholder="目標３" class="select_target"></textarea>
                     </td>
                 </tr>
                 <tr>
-                    <td><textarea id="target-6" dropzone="copy" draggable="true" placeholder="目標6"
-                            class="select_target"></textarea>
+                    <td><textarea style="background-color: #ffd700;" id="target-4" dropzone="copy" draggable="true"
+                            placeholder="目標4" class="select_target"></textarea>
                     </td>
-                    <td><textarea id="target-7" dropzone="copy" draggable="true" placeholder="目標7"
-                            class="select_target"></textarea>
+                    <td><textarea style="background-color: #ff6347;" id="target-0" dropzone="copy" draggable="true"
+                            placeholder="目的" class="select_target"></textarea>
                     </td>
-                    <td><textarea id="target-8" dropzone="copy" draggable="true" placeholder="目標8"
-                            class="select_target"></textarea>
+                    <td><textarea style="background-color: #ffa500;" id="target-5" dropzone="copy" draggable="true"
+                            placeholder="目標5" class="select_target"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td><textarea style="background-color: #ee82ee;" id="target-6" dropzone="copy" draggable="true"
+                            placeholder="目標6" class="select_target"></textarea>
+                    </td>
+                    <td><textarea style="background-color: #7fff00;" id="target-7" dropzone="copy" draggable="true"
+                            placeholder="目標7" class="select_target"></textarea>
+                    </td>
+                    <td><textarea style="background-color: #f5deb3;" id="target-8" dropzone="copy" draggable="true"
+                            placeholder="目標8" class="select_target"></textarea>
                     </td>
                 </tr>
             </table>
         </div>
     </main>
 
-    <footer>Team-building</footer>
+    <footer><a href="./chart.html">Mandala chart</a> </footer>
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>

@@ -1,0 +1,129 @@
+body{
+    height:100vh;
+    /* background-color: rgba(50, 141, 239, 0.831); */
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    flex-direction: column;
+    /* background-repeat: no-repeat;
+    background-size: contain; */
+    margin: 0%;
+}
+main{
+    background-image: url(img/mind.png);
+     background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    /* background-color: honeydew; */
+    width: 90vw;
+    height: 90vmin;
+}
+
+.main_target{
+    background-color: tomato;
+    position: relative;
+    opacity: 1;
+    font: weight 1200;
+}
+.sub_target1{
+    background-color:peru;
+    /* opacity: 0.8; */
+}
+.sub_target2{
+    background-color: darkturquoise;
+    /* opacity: 0.8; */
+}
+.sub_target3{
+    background-color: mediumorchid;
+    /* opacity: 0.8; */
+}
+.sub_target4{
+    background-color: gold;
+    /* opacity: 0.8; */
+}
+.sub_target5{
+    background-color:orange;
+    /* opacity: 0.8; */
+}
+.sub_target6{
+    background-color: violet;
+    /* opacity: 0.8; */
+}
+.sub_target7{
+    background-color:chartreuse;
+    /* opacity: 0.8; */
+}
+.sub_target8{
+    background-color:wheat;
+    /* opacity: 0.8; */
+}
+
+.box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90vw;
+    height: calc(90vmin/3);
+    padding: 0%;
+    margin: 0%;
+}
+table{
+    width: calc(90vw / 3);
+    height: 100%;
+    padding: 0%;
+    margin: 0%;
+}
+td{
+    background-color: ghostwhite;
+    border: solid 0.1px;
+    width: calc(100% / 9) ;
+    height: calc(100% / 9) ;
+    border-radius: 20px;
+    padding: 0%;
+    margin: 0%;
+    opacity: .9;
+}
+
+textarea {
+  width: 100%;
+  height: 40%;
+  resize: none;          
+  box-sizing: border-box;   /* 横にはみ出ないように */
+  background-color: ghostwhite;
+  border: none;
+  outline: none;
+  font-size: 10px;
+  text-align: center;
+  border-radius: 20px;
+  padding: 0%;
+  opacity: .9;
+
+}
+
+/* ul{
+    padding-top: 5%;
+    width: 90%;
+    height: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+} */
+/* 
+li{
+    list-style-type:none;
+    border: 1px solid #666;
+    background-color: #FFF;
+    cursor: pointer;
+    width: 30%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    
+} */
+
+footer{
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    width:90vw;
+}
