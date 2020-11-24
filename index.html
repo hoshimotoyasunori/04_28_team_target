@@ -62,7 +62,8 @@
                 </li>
                 <!--textarea-->
                 <li class="textarea_box">
-                    <textarea class="input_textarea" name="" id="text" placeholder="ガンガンアイデアを書き込んでください！！！！！"></textarea>
+                    <textarea class="input_textarea" name="" id="text" style="background-color:#f5f5f5;"
+                        placeholder="どんどんアイデアを書き込んでください！！！！！"></textarea>
                 </li>
                 <!--send-->
                 <li class="send_box">
@@ -72,22 +73,49 @@
         </div>
         <!-- データ出力場所 -->
         <div class="over">
-            <div class="output-box">
-                <ul class="output" id="output"></ul>
+            <div class="choices">
+                <div class="output-box">
+                    <ul class="output" id="output"></ul>
+                </div>
             </div>
             <div class="next">
                 =>
             </div>
-            <div class="select_output">
-                <textarea class="select_target"></textarea>
-                <textarea class="select_target"></textarea>
-                <textarea class="select_target"></textarea>
-                <textarea class="select_target"></textarea>
-                <textarea class="select_target"></textarea>
-                <textarea class="select_target"></textarea>
-                <textarea class="select_target"></textarea>
-                <textarea class="select_target"></textarea>
-            </div>
+            <table class="select_output">
+                <tr>
+                    <td><textarea id="target-1" dropzone="copy" draggable="true" placeholder="目標１"
+                            class="select_target"></textarea>
+                    </td>
+                    <td><textarea id="target-2" dropzone="copy" draggable="true" placeholder="目標２"
+                            class="select_target"></textarea>
+                    </td>
+                    <td><textarea id="target-3" dropzone="copy" draggable="true" placeholder="目標３"
+                            class="select_target"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td><textarea id="target-4" dropzone="copy" draggable="true" placeholder="目標4"
+                            class="select_target"></textarea>
+                    </td>
+                    <td><textarea id="target-0" dropzone="copy" draggable="true" placeholder="目的"
+                            class="select_target"></textarea>
+                    </td>
+                    <td><textarea id="target-5" dropzone="copy" draggable="true" placeholder="目標5"
+                            class="select_target"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td><textarea id="target-6" dropzone="copy" draggable="true" placeholder="目標6"
+                            class="select_target"></textarea>
+                    </td>
+                    <td><textarea id="target-7" dropzone="copy" draggable="true" placeholder="目標7"
+                            class="select_target"></textarea>
+                    </td>
+                    <td><textarea id="target-8" dropzone="copy" draggable="true" placeholder="目標8"
+                            class="select_target"></textarea>
+                    </td>
+                </tr>
+            </table>
         </div>
     </main>
 
@@ -158,6 +186,8 @@
 
 
             //////////////////////////////////////
+
+
             const data = {
                 name: $('#name').val(),
                 text: $('#text').val(),

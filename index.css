@@ -100,9 +100,11 @@ li{
 }
 textarea{
     border-radius: 20px;
-    height: 100%;
+    height: auto;
     resize: none;
     text-align: center;
+    padding: 0%;
+    margin: 0%;
 }
 .send_box{
     width: 20%;
@@ -120,18 +122,23 @@ button{
 
 .over{
     height: 47vh;
-    width: 100%;
+    width: 90vw;
     display: flex; 
-    justify-content: center;
+    justify-content: flex-start;
     margin: 0%;
+}
+
+.choices{
+    width:50%;
+    overflow-y: scroll;
 }
 .output_box{
     height: 100%;
-    width:40%;
-    overflow-y: scroll;
+    width:100%;
     margin: 0%;
     padding: 0%;
 }
+
 .output{
     width: 100%;
     height: 100%;
@@ -148,21 +155,27 @@ button{
     height: 100%;
     margin: 0%;
     background-color: white;
+    font-size: 5vmin;
 }
 .select_output{
-    height: 75%;
+    height: 47vh;
     width: 40%;
     /* overflow-y: scroll; */
     margin: 0%;
+    padding: 0%;
+}
+td{
+    width: calc(100%/3);
 }
 .select_target{
     width: 100%;
-    height: calc(100%/8);
+    height:100%;
+    border-radius: 50px;
 }
 footer{
     background-color: white;
     width: 90vw;
-    height: 3vh;
+    height: 5vh;
     display: flex; 
     justify-content: center;
     align-items: center;
