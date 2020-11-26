@@ -26,7 +26,7 @@
                 value=""></textarea>
         </div>
         <div class="header_input">
-            <textarea readonly class="target" dropzone="copy" draggable="true" id="sub-target-1" placeholder="目標1"
+            <textarea class="target" dropzone="copy" draggable="true" id="sub-target-1" placeholder="目標1"
                 style="background-color:#cd853f;" value=""></textarea>
             <textarea readonly class="target" dropzone="copy" draggable="true" id="sub-target-2" placeholder="目標2"
                 style="background-color:#00ced1;" value=""></textarea>
@@ -76,7 +76,7 @@
                 </div>
             </div>
             <div class="next">
-                <p class="write" style="font-size: 20%;">write or drag&drop</p>
+                <p class="write" style="font-size: 100%;">push</p>
             </div>
             <table class="select_output">
                 <tr>
@@ -182,7 +182,21 @@
             event.preventDefault();
 
 
-            //////////////////////////////////////
+            ////////////
+
+
+            //////////////////////////
+
+            // const textarea = document.querySelector('textarea');
+            // const log = document.getElementById('sub-target-1');
+
+            // textarea.addEventListener('change', updateValue);
+
+            // function updateValue(e) {
+            //     'sub-target-1'.textContent = e.srcElement.value;
+            // }
+
+
 
 
             const data = {
@@ -229,6 +243,7 @@
             db.add(data);
             $('#text').val('');
         });
+        //enter keyが押されたら起こるコード
         $(window).keydown(function (e) {
             if (e.keyCode == 13) {
                 const data = {
@@ -240,6 +255,8 @@
                 $('#text').val('');
             }
         });
+
+
 
         // データをリアルタイムに取得する処理
         db.orderBy('time', 'desc').onSnapshot(function (querySnapshot) {
@@ -265,6 +282,26 @@
             });
             $('#output').html(tagArray);
         });
+
+
+        // getValue();
+        // var $formObject = document.getElementById("target-1");
+        // for (var $i = 0; $i < $formObject.length; $i++) {
+        //     $formObject.elements[$i].onkeyup = function () {
+        //         getValue();
+        //     };
+        //     $formObject.elements[$i].onchange = function () {
+        //         getValue();
+        //     };
+        // }
+        // document.getElementById("sub-target-1").innerHTML = $formObject.length;
+        // // }
+        // function getValue() {
+        //     var $formObject = document.getElementById("target-1").value;
+        //     console.log($formObject);
+        //     document.getElementById("sub-target-1").value = $formObject;
+
+
 
         //動的
         // $("#output").click(function () {
