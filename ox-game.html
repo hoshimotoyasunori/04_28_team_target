@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="ox-game.css">
+    <title>Gobblet Gobblers</title>
+</head>
+
+<body>
+    <header class="top" id="top">
+
+        <h1>Gobblet Gobblers</h1>
+
+        <h2>ルール</h2>
+        <p>ゴブレットゴブラーズは、誰しもやったことがある「◯×ゲーム」をルーツとしながら、<br> まさかの進化を遂げて帰ってきました。
+            ルールはシンプル。<br> 「◯×ゲーム」と同様に直線上に３つ自分のコマを並べたら勝ち。<br>
+            でもそう簡単にはいきません。自分の置いたコマが相手に隠されたり、<br> 盤上に置いたコマを再度動かすこともでき、一気に形勢逆転となることも、、、
+        </p>
+        <ul>
+            <li> 自分のコマを盤面の空いている場所に置くことができる。</li>
+            <li> 自分のコマより小さいコマに被せて隠すことができる。</li>
+            <li>自分のコマに、さらに自分のコマを被せることもできる。</li>
+            <li>持ち駒のほか、既に盤面に置いた「見えている自分のコマ」を動かすこともできる。</li>
+        </ul>
+        <p> ボードゲームで遊んでいると「こういうのはアリ？」という疑問が生まれることがありますが、<br> このゴブレットゴブラーズでは、大抵はアリです。
+
+            こうして自分のコマを配置したり、<br> 相手のコマより大きなコマで被せたり、はたまた相手に被せられたり、、、
+            <br> ゲームを進めると、シンプルながらも奥深い戦略性に気が付くはずです。
+        </p>
+
+        <div id="first">
+            <input id="name1" type="text" placeholder="player1">
+            <button id="send1">entry</button>
+
+        </div>
+        <div id="second">
+            <input id="name2" type="text" placeholder="player2">
+            <button id="send2">entry</button>
+
+        </div>
+
+
+    </header>
+    <div id="divid" class="divid">
+        <div class="plan">
+            <h1>Gobblet Gobblers</h1>
+            <ul id="my_name"></ul>
+            <!-- <input type="text" id="my_name"> -->
+            <div>VS</div>
+            <ul id="your_name"></ul>
+            <!-- <input type="text" id="your_name"> -->
+        </div>
+        <main id="main">
+            <div class="window-left" id="left">
+                <table class="bord">
+                    <tr class="top">
+                        <td class="box1"></td>
+                        <td class="box2"></td>
+                        <td class="box3"></td>
+                    </tr>
+                    <tr class="middle">
+                        <td class="box4"></td>
+                        <td class="box5"></td>
+                        <td class="box6"></td>
+                    </tr>
+                    <tr class="bottom">
+                        <td class="box7"></td>
+                        <td class="box8"></td>
+                        <td class="box9"></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="window-right">
+                <div class="your-table">
+                    <div class="you">
+                        <img class="file1" src="img1/blue_min1.png" id="blue_min1" style="width: 4vw;" draggable="true">
+                        <img class="file2" src="img1/blue_min2.png" id="blue_min2" style="width: 4vw;" draggable="true">
+                        <img class="file3" src="img1/blue_mid1.png" id="blue_mid1" style="width: 7vw;" draggable="true">
+                        <img class="file4" src="img1/blue_mid2.png" id="blue_mid2" style="width: 7vw;" draggable="true">
+                        <img class="file5" src="img1/blue_big1.png" id="blue_big1" style="width: 9vw;" draggable="true">
+                        <img class="file6" src="img1/blue_big2.png" id="blue_big2" style="width: 9vw;" draggable="true">
+                    </div>
+                </div>
+                <div class="vs">VS</div>
+                <div class="my-table">
+                    <div class="me">
+                        <img class="file7" src="img1/red_min1.png" id="red_min1" style="width: 4vw;" draggable="true">
+                        <img class="file8" src="img1/red_min2.png" id="red_min2" style="width: 4vw;" draggable="true">
+                        <img class="file9" src="img1/red_mid1.png" id="red_mid1" style="width: 7vw;" draggable="true">
+                        <img class="file10" src="img1/red_mid2.png" id="red_mid2" style="width: 7vw;" draggable="true">
+                        <img class="file11" src="img1/red_big1.png" id="red_big1" style="width: 9vw;" draggable="true">
+                        <img class="file12" src="img1/red_big2.png" id="red_big2" style="width: 9vw;" draggable="true">
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "",
+            authDomain: "ox-game-63204.firebaseapp.com",
+            databaseURL: "https://ox-game-63204.firebaseio.com",
+            projectId: "ox-game-63204",
+            storageBucket: "ox-game-63204.appspot.com",
+            messagingSenderId: "277870549936",
+            appId: "1:277870549936:web:091f7109ecd95eef161475"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+
+        ///////////////player1
+        const db = firebase.firestore().collection('file');
+        $('#send1').on('click', function () {
+            db.add({
+                name: $('#name1').val(),
+            });
+            $('#name1').val('');
+        });
+        // console.log(db)
+
+        //////////////////受信処理のコード////////////////受信処理がうまくいかねえ
+        db.orderBy('time', 'desc').onSnapshot(function (querySnapshot) {
+            // onSnapshotでcloud firestoreのデータ変更時に実行される!
+            // querySnapshot.docsにcloud firestoreのデータが配列形式で入る 
+            const dataArray = []; // 必要なデータだけが入った新しい配列を作成 
+            querySnapshot.docs.forEach(function (doc) {
+                const data = {
+                    id: doc.id,
+                    data: doc.data(),
+                }
+                dataArray.push(data);
+            });
+            //     console.log(dataArray)
+            const tagArray = [];
+            dataArray.forEach(function (data) {
+                tagArray.push(`
+                  <li id=${data.id}>
+                   <p>${data.data.name}</p>
+                  </li> 
+                  `);
+            });
+            $('#my_name').html(tagArray);
+            // console.log(tagArray)
+        });
+
+
+        //////////////player2
+        const db1 = firebase.firestore().collection('file2');
+        $('#send2').on('click', function () {
+            db1.add({
+                name: $('#name2').val(),
+            });
+            $('#name2').val('');
+        });
+        // console.log(db1) 
+
+
+        //////////////////受信処理のコード
+        db1.orderBy('time', 'desc').onSnapshot(function (querySnapshot) {
+            // onSnapshotでcloud firestoreのデータ変更時に実行される!
+            // querySnapshot.docsにcloud firestoreのデータが配列形式で入る 
+            const dataArray1 = []; // 必要なデータだけが入った新しい配列を作成 
+            querySnapshot.docs.forEach(function (doc) {
+                const data1 = {
+                    id: doc.id,
+                    data: doc.data(),
+                }
+                dataArray1.push(data1);
+            });
+            //     console.log(dataArray)
+            const tagArray1 = [];
+            dataArray1.forEach(function (data1) {
+                tagArray1.push(`
+                  <li id=${data.id}>
+                   <p>${data.data.name}</p>
+                  </li> 
+                  `);
+            });
+            $('#your_name').html(tagArray1);
+            // console.log(tagArray)
+        });
+
+
+
+        //////////drag&drop//////////////
+        const lists = ['.file1', '.file2', '.file3', '.file4', '.file5', '.file6', '.file7', '.file8', '.file9', '.file10', '.file11', '.file12'];
+        const box = ['.box1', '.box2', '.box3', '.box4', '.box5', '.box6', '.box7', '.box8', '.box9'];
+        var target = null;
+        const files = ['blue_min1', 'blue_min2', 'blue_mid1', 'blue_mid2', 'blue_big1', 'blue_big2', 'red_min1', 'red_min2', 'red_mid1', 'red_mid2', 'red_big1', 'red_big2'];
+        for (var i = 0; i < lists.length; i++) {
+            // console.log(lists[i]);
+            addEventListener('dragstart', (i) => {
+                // console.log('dragstartイベント');
+            });
+            addEventListener('drag', (i) => {
+                // console.log('dragイベント');
+            });
+            addEventListener('dragend', (i) => {
+                // console.log('dragendイベント');
+            });
+        };
+        for (var i = 0; i < box.length; i++) {
+            // console.log(box[i]);
+            addEventListener('dragover', (i) => {
+                event.preventDefault();
+            });
+            addEventListener('drop', (i) => {
+                event.preventDefault();
+                // console.log('dropイベント');
+            });
+        };
+        window.onload = function () {
+            for (var i = 0; i < files.length; i++) {
+                var drag = document.getElementById(i);
+                // drag側
+                addEventListener('dragstart', function (e) {
+                    target = e.target;
+                }, false);
+            };
+            for (var i = 0; i < box.length; i++) {
+                var drop = document.getElementById(i);
+                // drop側
+                addEventListener('dragover', function (e) {
+                    e.preventDefault();
+                }, false);
+                addEventListener('drop', function (e) {
+                    e.preventDefault();
+                    e.target.appendChild(target);
+                }, false);
+            };
+        };
+
+
+        $('#send1').on('click', function () {
+            if ($('#second').css("display") == "none") {
+                $("#top").css("display", "none");
+                $("#divid").css("display", "block");
+            } else {
+                $('#first').css("display", "none");
+            };
+        });
+        $('#send2').on('click', function () {
+            if ($('#first').css("display") == "none") {
+                $("#top").css("display", "none");
+                $("#divid").css("display", "block");
+            } else {
+                $('#second').css("display", "none");
+            };
+        });
+    </script>
+
+</body>
+
+</html>

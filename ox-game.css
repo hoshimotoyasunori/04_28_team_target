@@ -1,0 +1,150 @@
+body{
+    width: 100vw;
+    height: 100vh;
+}
+header{ 
+    width: 100vw;
+    height: 100vh;
+    /* display: flex; 
+    justify-content: center; */
+     display: flex; 
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.title{
+    height: 50%;
+    margin: 0%;
+}
+/* .ru-ru{
+    margin: 0%;
+    height: 60vh;
+    font-size:200%;
+} */
+h1{
+    padding: 0%;
+    margin: 0%;
+}
+.divid{
+    display: none;
+}
+.plan{
+     display: flex; 
+    justify-content: center;
+    align-items: center;
+}
+
+main{
+    width: 100vw;
+    height: 90vh;
+    display: flex; 
+    justify-content: center;
+    align-items: flex-start;
+}
+/* .main{
+    display: none;
+} */
+.window-left{
+    padding: 0%;
+    margin: 0%;
+    width: 50vw;
+    height: 90vh;
+    border: solid;
+   
+}
+.window-right{
+    padding: 0%;
+    margin: 0%;
+     width: 50vw;
+    height: 90vh;
+    border: solid;
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* leftside */
+.bord{
+    width: 50vw;
+    height: 90vh;
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 0%;
+    padding: 0%;
+}
+table{
+    width: 50vw;
+    height: 90vh;
+    margin: 0%;
+    padding: 0%;
+}
+tr{
+    padding: 0%;
+    margin: 0%;
+    width: 50vw;
+    height:calc(90vh/3);
+    border: solid;
+}
+td{
+    
+    padding: 0;
+    margin: 0%;
+    width:calc(50vw/3);
+    border: solid;
+    text-align: center;
+}
+
+/* right-side */
+
+.your-table{
+    padding: 0%;
+    margin: 0%;
+    width: 100%;
+    height: 40vh;
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.my-table{
+    padding: 0%;
+    margin: 0%;
+    width: 100%;
+    height: 40vh;
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.you{
+    width: 100%;
+    height: 100%;
+    flex-direction: row;
+  justify-content: space-evenly;
+  
+ 
+    
+}
+.me{
+    width: 100%;
+    height: 100%;
+    flex-direction: row;
+  justify-content: space-evenly;
+   
+} 
+.vs{
+    width: 100%;
+    height: 10vh;
+    text-align: center;
+}
+img{
+    padding: 0%;
+    margin: 0%;
+    flex-direction: row;
+  justify-content: space-evenly;
+}
+
+
