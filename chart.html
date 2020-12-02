@@ -216,7 +216,6 @@
         $(function () {
             //1.Save クリックイベント
             $('textarea').keyup(function () {
-                // const text = $('#main_target').val();
                 const data = {
 
                     main: $('#main_target').val(),
@@ -310,41 +309,57 @@
 
 
 
-                getValue();
-                var $formObject = document.getElementById("sub_target1");
-                for (var $i = 0; $i < $formObject.length; $i++) {
-                    $formObject.elements[$i].onkeyup = function () {
-                        getValue();
-                    };
-                    $formObject.elements[$i].onchange = function () {
-                        getValue();
-                    };
-                }
-                document.getElementById("sub_1").innerHTML = $formObject.length;
-
-                function getValue() {
-                    var $formObject = document.getElementById("sub_target1").value;
-                    console.log($formObject);
-                    document.getElementById("sub_1").value = $formObject;
-                }
-                getValue();
-                var $formObject = document.getElementById("sub_target2");
-                for (var $i = 0; $i < $formObject.length; $i++) {
-                    $formObject.elements[$i].onkeyup = function () {
-                        getValue();
-                    };
-                    $formObject.elements[$i].onchange = function () {
-                        getValue();
-                    };
-                }
-                document.getElementById("sub_2").innerHTML = $formObject.length;
-                // }
-                function getValue() {
-                    var $formObject = document.getElementById("sub_target2").value;
-                    console.log($formObject);
-                    document.getElementById("sub_2").value = $formObject;
-                }
+                $('#sub_target1').keyup(function () {
+                    let data = document.getElementById("sub_target1").value;
+                    document.getElementById("sub_1").value = data;
+                })
+                $('#sub_target2').keyup(function () {
+                    let data = document.getElementById("sub_target2").value;
+                    document.getElementById("sub_2").value = data;
+                })
+                $('#sub_target3').keyup(function () {
+                    let data = document.getElementById("sub_target3").value;
+                    document.getElementById("sub_3").value = data;
+                })
+                $('#sub_target4').keyup(function () {
+                    let data = document.getElementById("sub_target4").value;
+                    document.getElementById("sub_4").value = data;
+                })
+                $('#sub_target5').keyup(function () {
+                    let data = document.getElementById("sub_target5").value;
+                    document.getElementById("sub_5").value = data;
+                })
+                $('#sub_target6').keyup(function () {
+                    let data = document.getElementById("sub_target6").value;
+                    document.getElementById("sub_6").value = data;
+                })
+                $('#sub_target7').keyup(function () {
+                    let data = document.getElementById("sub_target7").value;
+                    document.getElementById("sub_7").value = data;
+                })
+                $('#sub_target8').keyup(function () {
+                    let data = document.getElementById("sub_target8").value;
+                    document.getElementById("sub_8").value = data;
+                })
             });
+
+            // getValue();
+            // const $formObject = document.getElementById("sub_target1");
+            // for (const $i = 0; $i < $formObject.length; $i++) {
+            //     $formObject.elements[$i].onkeyup = function () {
+            //         getValue();
+            //     };
+            //     $formObject.elements[$i].onchange = function () {
+            //         getValue();
+            //     };
+            // }
+            // document.getElementById("sub_1").innerHTML = $formObject.length;
+
+            // function getValue() {
+            //     const $formObject = document.getElementById("sub_target1").value;
+            //     console.log($formObject);
+            //     document.getElementById("sub_1").value = $formObject;
+
             //2.clear クリックイベント
             $('#clear').on('click', function () {
                 localStorage.removeItem('memo');
