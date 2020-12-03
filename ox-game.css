@@ -146,5 +146,7 @@ img{
     flex-direction: row;
   justify-content: space-evenly;
 }
-
+li{
+    list-style: none;
+}
 

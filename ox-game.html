@@ -33,14 +33,14 @@
         <div id="first">
             <input id="name1" type="text" placeholder="player1">
             <button id="send1">entry</button>
-
         </div>
         <div id="second">
             <input id="name2" type="text" placeholder="player2">
             <button id="send2">entry</button>
-
         </div>
-
+        <div>
+            <button id="start">start</button>
+        </div>
 
     </header>
     <div id="divid" class="divid">
@@ -119,82 +119,109 @@
         // Initialize Firebase
         firebase.initializeApp(firebaseConfig);
 
-        ///////////////player1
-        const db = firebase.firestore().collection('file');
-        $('#send1').on('click', function () {
-            db.add({
-                name: $('#name1').val(),
-            });
-            $('#name1').val('');
-        });
-        // console.log(db)
 
-        //////////////////受信処理のコード////////////////受信処理がうまくいかねえ
+
+
+        ///////////////チャットのコレクション
+        const db = firebase.firestore().collection('file');
+        /////////送信
+        $('#send1').on('click', function () {
+            const data1 = {
+                name1: $('#name1').val(),
+                time: firebase.firestore.FieldValue.serverTimestamp(),
+            };
+            /////////name1の送信処理
+            db.add(data1);
+            // $('#name1').val('');
+        });
+
+        // console.log(db)
+        //////////////////受信処理のリアルタイム////////////////
         db.orderBy('time', 'desc').onSnapshot(function (querySnapshot) {
             // onSnapshotでcloud firestoreのデータ変更時に実行される!
             // querySnapshot.docsにcloud firestoreのデータが配列形式で入る 
-            const dataArray = []; // 必要なデータだけが入った新しい配列を作成 
+            // 必要なデータだけが入った新しい配列を作成 
+            // console.log(querySnapshot.docs);
+            const dataArray = [];
             querySnapshot.docs.forEach(function (doc) {
                 const data = {
                     id: doc.id,
                     data: doc.data(),
-                }
+                };
+                ///////.pushでdataArrayに追加
                 dataArray.push(data);
             });
-            //     console.log(dataArray)
+            console.log(dataArray);
+
+            ////////受信処理
+            ///////myname
             const tagArray = [];
             dataArray.forEach(function (data) {
-                tagArray.push(`
-                  <li id=${data.id}>
-                   <p>${data.data.name}</p>
-                  </li> 
-                  `);
+                const tag = `
+                      <li id="${data.id}">
+                       <p>${data.data.name1}</p>
+                      </li> 
+                      `;
+                tagArray.push(tag);
             });
             $('#my_name').html(tagArray);
-            // console.log(tagArray)
+
         });
 
 
-        //////////////player2
-        const db1 = firebase.firestore().collection('file2');
+
+        const db2 = firebase.firestore().collection('file2');
+        /////////送信
         $('#send2').on('click', function () {
-            db1.add({
-                name: $('#name2').val(),
-            });
-            $('#name2').val('');
+            const data2 = {
+                name2: $('#name2').val(),
+                time2: firebase.firestore.FieldValue.serverTimestamp(),
+            };
+            /////////name1の送信処理
+            db2.add(data2);
+            // $('#name1').val('');
         });
-        // console.log(db1) 
 
-
-        //////////////////受信処理のコード
-        db1.orderBy('time', 'desc').onSnapshot(function (querySnapshot) {
+        // console.log(db)
+        //////////////////受信処理のリアルタイム////////////////
+        db2.orderBy('time', 'desc').onSnapshot(function (querySnapshot) {
             // onSnapshotでcloud firestoreのデータ変更時に実行される!
             // querySnapshot.docsにcloud firestoreのデータが配列形式で入る 
-            const dataArray1 = []; // 必要なデータだけが入った新しい配列を作成 
+            // 必要なデータだけが入った新しい配列を作成 
+            // console.log(querySnapshot.docs);
+            const dataArray2 = [];
             querySnapshot.docs.forEach(function (doc) {
-                const data1 = {
+                const data2 = {
                     id: doc.id,
                     data: doc.data(),
-                }
-                dataArray1.push(data1);
+                };
+                ///////.pushでdataArrayに追加
+                dataArray2.push(data2);
             });
-            //     console.log(dataArray)
-            const tagArray1 = [];
-            dataArray1.forEach(function (data1) {
-                tagArray1.push(`
-                  <li id=${data.id}>
-                   <p>${data.data.name}</p>
-                  </li> 
-                  `);
+            console.log(dataArray2);
+
+            ////////受信処理
+            ///////yourname
+            const tagArray2 = [];
+            dataArray2.forEach(function (data) {
+                const tag2 = `
+                      <li id="${data.id}">
+                       <p>${data.data.name2}</p>
+                      </li> 
+                      `;
+                tagArray2.push(tag2);
             });
-            $('#your_name').html(tagArray1);
-            // console.log(tagArray)
+            $('#your_name').html(tagArray2);
         });
+
+
 
 
 
         //////////drag&drop//////////////
+        ///////画像
         const lists = ['.file1', '.file2', '.file3', '.file4', '.file5', '.file6', '.file7', '.file8', '.file9', '.file10', '.file11', '.file12'];
+        ///////受け入れ先
         const box = ['.box1', '.box2', '.box3', '.box4', '.box5', '.box6', '.box7', '.box8', '.box9'];
         var target = null;
         const files = ['blue_min1', 'blue_min2', 'blue_mid1', 'blue_mid2', 'blue_big1', 'blue_big2', 'red_min1', 'red_min2', 'red_mid1', 'red_mid2', 'red_big1', 'red_big2'];
@@ -257,6 +284,10 @@
             } else {
                 $('#second').css("display", "none");
             };
+        });
+        $('#start').on('click', function () {
+            $("#top").css("display", "none");
+            $("#divid").css("display", "block");
         });
     </script>
 
